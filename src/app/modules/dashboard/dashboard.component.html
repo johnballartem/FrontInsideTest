@@ -1,0 +1,44 @@
+<div *ngIf="areaChart">
+  <app-widget-area [data]="dataChart.total"></app-widget-area>
+</div>
+<div *ngIf="columnChart">
+  <app-widget-column [data]="dataChart.total"></app-widget-column>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<div *ngIf="areaChart" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+  <mat-card fxFlex="50">
+    <app-widget-area [data]="dataChart.quantity"></app-widget-area>
+  </mat-card>
+  <mat-card fxFlex="50">
+    <app-widget-area [data]="dataChart.price"></app-widget-area>
+  </mat-card>
+</div>
+
+<div *ngIf="columnChart" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+  <mat-card fxFlex="50">
+    <app-widget-column [data]="dataChart.quantity"></app-widget-column>
+  </mat-card>
+  <mat-card fxFlex="50">
+    <app-widget-column [data]="dataChart.price"></app-widget-column>
+  </mat-card>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<div *ngIf="tableChart" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+  <div fxFlex="100">
+    <app-widget-table [dataSource]="dataChart.table"></app-widget-table>
+  </div>
+</div>
+
+<br>
+<br>
+<br>

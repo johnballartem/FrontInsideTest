@@ -1,0 +1,145 @@
+<mat-nav-list>
+
+  <div class="profile-filter">
+    <mat-form-field appearance="fill">
+      <mat-label>Chart Type</mat-label>
+      <mat-select [(value)]="valueChartType" placeholder="Mode" (selectionChange)="onChangeChartType()">
+        <mat-option value="column">Column</mat-option>
+        <mat-option value="area">Area</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="profile-filter">
+    <mat-form-field appearance="fill">
+      <mat-label>Grouped by</mat-label>
+      <mat-select [(value)]="valueGroupedBy" placeholder="Mode" (selectionChange)="getDataFiltered()">
+        <mat-option value="product">Product</mat-option>
+        <mat-option value="customerRoot">Customer Root</mat-option>
+        <mat-option value="customerLeaf">Customer Leaf</mat-option>
+        <mat-option value="packSize">Pack Size</mat-option>
+        <mat-option value="unitType">Unit Type</mat-option>
+        <mat-option value="category">Category</mat-option>
+        <mat-option value="distributorRoot">Distributor Root</mat-option>
+        <mat-option value="distributorLeaf">Distributor Leaf</mat-option>
+        <mat-option value="manufacturer">Manufacturer</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h2 matSubheader>Filters</h2>
+
+  <div class="profile-filter">
+    <form class="example-form" novalidate #f="ngForm">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Invoice</mat-label>
+        <input matInput placeholder="Ex. 498624" [(ngModel)]="invoiceFilter" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </form>
+
+    <form class="example-form" novalidate #f="ngForm">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Initial Purchase Date</mat-label>
+        <input type="date" matInput placeholder="Ex. 09/27/2022"   [(ngModel)]="initialPurchaseDateFilter" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </form>
+
+    <form class="example-form" novalidate #f="ngForm">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Final Purchase Date</mat-label>
+        <input type="date" matInput placeholder="Ex. 09/30/2022"  [(ngModel)]="finalPurchaseDateFilter" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Product</mat-label>
+      <mat-select [(value)]="productFilter">
+        <mat-option *ngFor="let product of products" [value]="product.value">
+          {{product.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Customer Root</mat-label>
+      <mat-select [(value)]="customerRootFilter">
+        <mat-option *ngFor="let customerRoot of customerRoots" [value]="customerRoot.value">
+          {{customerRoot.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Customer Leaf</mat-label>
+      <mat-select [(value)]="customerLeafFilter">
+        <mat-option *ngFor="let customerLeaf of customerLeafs" [value]="customerLeaf.value">
+          {{customerLeaf.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Pack Size</mat-label>
+      <mat-select [(value)]="packSizeFilter">
+        <mat-option *ngFor="let packSize of packSizes" [value]="packSize.value">
+          {{packSize.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Type</mat-label>
+      <mat-select [(value)]="unitTypeFilter">
+        <mat-option *ngFor="let unitType of unitTypes" [value]="unitType.value">
+          {{unitType.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select [(value)]="categoryFilter">
+        <mat-option *ngFor="let category of categories" [value]="category.value">
+          {{category.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Distributor Root</mat-label>
+      <mat-select [(value)]="distributorRootFilter">
+        <mat-option *ngFor="let distributorRoot of distributorRoots" [value]="distributorRoot.value">
+          {{distributorRoot.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Distributor Leaf</mat-label>
+      <mat-select [(value)]="distributorLeafFilter">
+        <mat-option *ngFor="let distributorLeaf of distributorLeafs" [value]="distributorLeaf.value">
+          {{distributorLeaf.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Manufacturer</mat-label>
+      <mat-select [(value)]="manufacturerFilter">
+        <mat-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.value">
+          {{manufacturer.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="getDataFiltered()">
+      <mat-icon>filter_list</mat-icon>
+      Filter
+    </button>
+  </div>
+
+</mat-nav-list>
